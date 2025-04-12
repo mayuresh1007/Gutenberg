@@ -1,6 +1,6 @@
 
 import React from "react";
-import "./BookCard.css";
+import "../components/Bookcard.css";
 
 const BookCard = ({ title, author, image, book }) => {
   const preferredFormats = ['text/html','application/pdf','text/plain','application/zip']
