@@ -140,15 +140,30 @@ const BookListPage = () => {
       </div>
 
       <div className="books-grid">
-        {books.map((book) => (
-          <BookCard
-            book={book}
-            key={book.id}
-            title={book.title}
-            author={book.authors[0]?.name || "Unknown"}
-            image={book.formats["image/jpeg"]}
-          />
-        ))}
+        {books.map((book, index) => {
+          if (index === books.length - 1) {
+            return (
+              <div ref={lastBookElementRef} key={book.id}>
+                <BookCard
+                  book={book}
+                  title={book.title}
+                  author={book.authors[0]?.name || "Unknown"}
+                  image={book.formats["image/jpeg"]}
+                />
+              </div>
+            );
+          } else {
+            return (
+              <BookCard
+                book={book}
+                key={book.id}
+                title={book.title}
+                author={book.authors[0]?.name || "Unknown"}
+                image={book.formats["image/jpeg"]}
+              />
+            );
+          }
+        })}
       </div>
 
       {isLoading && (
@@ -162,3 +177,15 @@ const BookListPage = () => {
 };
 
 export default BookListPage;
+
+
+  /* {books.map((book) => (
+          <BookCard
+            book={book}
+            key={book.id}
+            title={book.title}
+            author={book.authors[0]?.name || "Unknown"}
+            image={book.formats["image/jpeg"]}
+          />
+        ))} */
+
